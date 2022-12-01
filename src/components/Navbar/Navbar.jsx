@@ -1,22 +1,28 @@
 import React from 'react'
 import "./Navbar.css"
-import {AiOutlineMenu} from "react-icons/ai"
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <header>
-        <figure className="brand">Byteloop</figure>
-        <nav className="menu">
-            <input type="checkbox" id="menuToggle" />
-            <label for="menuToggle" className="menu-icon"><AiOutlineMenu className="menu-bars" /></label>
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Categories</li>
-                <li>Login</li>
-                <li>Register</li>
-            </ul>
-        </nav>
-    </header>
+  <span  className="logo">
+    <NavLink to='/' className="nav-link">
+    <h2>Byteloop</h2>
+    </NavLink>
+  </span>
+  <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+  <nav>
+    <ul>
+      <li><NavLink to="/" className="nav-link">Home</NavLink></li>
+      <li><NavLink to="/" className="nav-link">About</NavLink></li>
+      <li><NavLink to="/" className="nav-link login-btn">Login</NavLink></li>
+      <li><NavLink to="/" className="nav-link register-btn">Register</NavLink></li>
+
+    </ul>
+  </nav>
+  <label htmlFor="nav-toggle" className="nav-toggle-label">
+    <span></span>
+  </label>
+</header>
 
   )
 }

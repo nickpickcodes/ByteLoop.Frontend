@@ -1,89 +1,167 @@
 
-li {
-    list-style: none;
-}
-/*Início das configurações da header*/
-header {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-family: sans-serif;
-    background-color: #0f8bf1;
+  .logo ,.nav-link {
+    text-decoration: none;
+    color: #fff;
+    margin: .5rem 0;
+  }
+  
 
-}
-.brand {
-    width: auto;
-    height: 100%;
-    float: left;
-    margin: 0 0 0 5%;
-}
-/*Início das configurações da Navigation*/
-.menu {
-    width: 60%;
-    height: 100%;
-    float: right;
-}
-.menu ul {
+  header {
+    position: sticky;
+    background: rgba(50, 80, 200, .84);
+    z-index: 999;
+    text-align: center;
     width: 100%;
-    height: inherit;
+    top: 0;
+    left: 0;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  .nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-toggle-label span,
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+  }
+  
+  .nav-toggle-label span::before,
+  .nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+  }
+  
+  .nav-toggle-label span::before {
+    bottom: 7px;
+  }
+  .nav-toggle-label span::after {
+    top: 7px;
+  }
+  
+  nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: rgba(50, 80, 200, .84);
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+  }
+  
+  nav ul {
     margin: 0;
     padding: 0;
-    display: flex;
-}
-.menu ul li {
-    width: 20%;
-    height: inherit;
-    color: #222;
-    display: inline-block;
-    cursor: pointer;
-}
-.menu ul li:hover {
-    background-color: #13578f;
+    list-style: none;
+  }
+  
+  nav li {
+    margin-bottom: 1em;
+    margin-left: 1em;  
+  }
+  nav a {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+  nav a:hover {
+    color: #000;
+    
+  }
+  
+  .nav-toggle:checked ~ nav {
+    transform: scale(1, 1);
+  }
+  
+  .nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+  }
+  
+  @media screen and (min-width: 800px) {
+    .nav-toggle-label {
+      display: none;
+    }
+    
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto minmax(600px, 4fr) 1fr;
+    }
+    
+    .logo {
+      grid-column: 2 / 3;
+    }
+    
+    nav {
+      all: unset;
+      grid-column: 3 / 4;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    
+    nav ul {
+      display: flex;
+    }
+    
+    nav li {
+      margin-left: 2.5em;
+      margin-bottom: 0;
+    }
+    
+    nav a {
+      opacity: 1;
+      position: relative;
+    }
+    
+    nav a::before {
+      content:'';
+      display: block;
+      height: 4px;
+      background: black;
+      position: absolute;
+      top: -.38em;
+      left: 0;
+      right: 0;
+      transform: scale(0, 1);
+      transition: transform ease-in-out 250ms;
+    }
+    nav a:hover::before {
+      transform: scale(1,1);
+    }
+    
+  }
 
-    color: #fff;
-}
-#menuToggle {
-    display: none;
-}
-.menu-icon {
-    display: none;
-}
+  .login-btn,.register-btn{
+    border: 2px solid white;
+    padding: .2rem .4rem;
+    transition: .3s all;
+    border-radius: 10px;
 
-@media screen and (max-width: 768px) {
-    .menu {
-        width: 100%;
-        height: auto;
-    }
-    .menu ul {
-        display: block;
-        max-height: 0;
-    	overflow: hidden;
-    	transition: max-height 0.3s;
-    }
-    .menu ul li {
-        text-align: left;
-        width: 100%;
-        height: 50px;
-        background-color: #0f8bf1;
-        /* padding: 10px 0px 10px 5%; */
-        margin: 0;
-padding-left: 1rem;
-    }
-    .menu-icon {
-        width: 100px;
-        height: inherit;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        line-height: 60px;
-
-    }
-    #menuToggle:checked ~ ul {
-        max-height: 350px;
-    }
-    .menu-icon .menu-bars {
-        font-size: 1.7em;
-    }
-}
+  }
+  .login-btn:hover,.register-btn:hover{
+    background-color: white;
+    color: #536CD1;
+  }
+  .login-btn::before , .register-btn::before{
+    transform: none ;
+    background: #536CD1;
+  }
